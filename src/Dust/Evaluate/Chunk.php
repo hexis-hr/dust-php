@@ -17,8 +17,8 @@ class Chunk {
     
     public function __construct(Evaluator $evaluator) {
         $this->evaluator = $evaluator;
-        $this->pendingNamedBlocks = [];
-        $this->setNamedStrings = [];
+        $this->pendingNamedBlocks = array();
+        $this->setNamedStrings = array();
     }
     
     public function newChild() {
@@ -35,9 +35,9 @@ class Chunk {
     
     public function markNamedBlockBegin($name) {
         if (!array_key_exists($name, $this->pendingNamedBlocks)) {
-            $this->pendingNamedBlocks[$name] = [];
+            $this->pendingNamedBlocks[$name] = array();
         }
-        $block = (object)["begin" => strlen($this->out), "end" => null];
+        $block = (object)array("begin" => strlen($this->out), "end" => null);
         $this->pendingNamedBlocks[$name][] = $block;
         return $block;
     }

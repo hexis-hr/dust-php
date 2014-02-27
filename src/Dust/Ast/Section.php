@@ -2,7 +2,7 @@
 namespace Dust\Ast;
 
 class Section extends Part {
-    public static $acceptableTypes = ['#', '?', '^', '<', '+', '@', '%'];
+    public static $acceptableTypes = array('#', '?', '^', '<', '+', '@', '%');
     
     public $type;
     

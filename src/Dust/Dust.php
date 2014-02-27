@@ -14,7 +14,7 @@ class Dust implements \Serializable {
     
     public $automaticFilters;
     
-    public $includedDirectories = [];
+    public $includedDirectories = array();
     
     public $autoloaderOverride;
     
@@ -23,8 +23,8 @@ class Dust implements \Serializable {
         if ($evaluator === null) $evaluator = new Evaluate\Evaluator($this);
         $this->parser = $parser;
         $this->evaluator = $evaluator;
-        $this->templates = [];
-        $this->filters = [
+        $this->templates = array();
+        $this->filters = array(
             "s" => new Filter\SuppressEscape(),
             "h" => new Filter\HtmlEscape(),
             "j" => new Filter\JavaScriptEscape(),
@@ -32,8 +32,8 @@ class Dust implements \Serializable {
             "uc" => new Filter\EncodeUriComponent(),
             "js" => new Filter\JsonEncode(),
             "jp" => new Filter\JsonDecode()
-        ];
-        $this->helpers = [
+        );
+        $this->helpers = array(
             "select" => new Helper\Select(),
             "math" => new Helper\Math(),
             "eq" => new Helper\Eq(),
@@ -45,8 +45,8 @@ class Dust implements \Serializable {
             "sep" => new Helper\Sep(),
             "size" => new Helper\Size(),
             "contextDump" => new Helper\ContextDump()
-        ];
-        $this->automaticFilters = [$this->filters['h']];
+        );
+        $this->automaticFilters = array($this->filters['h']);
     }
     
     public function compile($source, $name = null) {

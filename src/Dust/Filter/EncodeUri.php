@@ -10,7 +10,7 @@ class EncodeUri implements Filter {
     }
     
 }
-EncodeUri::$replacers = [
+EncodeUri::$replacers = array(
     '%2D' => '-',
     '%5F' => '_',
     '%2E' => '.',
@@ -31,4 +31,4 @@ EncodeUri::$replacers = [
     '%2B' => '+',
     '%24' => '$',
     '%23' => '#'
-];
+);

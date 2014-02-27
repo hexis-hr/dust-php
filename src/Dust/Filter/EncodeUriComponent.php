@@ -10,10 +10,10 @@ class EncodeUriComponent implements Filter {
     }
     
 }
-EncodeUriComponent::$replacers = [
+EncodeUriComponent::$replacers = array(
     '%21' => '!',
     '%2A' => '*',
     '%27' => "'",
     '%28' => '(',
     '%29' => ')'
-];
+);

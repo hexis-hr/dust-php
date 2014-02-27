@@ -22,7 +22,7 @@ class Parser {
     
     public function parseBody(ParserContext $ctx) {
         $body = new Ast\Body($ctx->offset);
-        $body->parts = [];
+        $body->parts = array();
         while ($ctx->offset < strlen($ctx->str)) {
             $part = $this->parsePart($ctx);
             if ($part == null) break;
@@ -91,7 +91,7 @@ class Parser {
     }
     
     public function parseParameters(ParserContext $ctx) {
-        $params = [];
+        $params = array();
         while (true) {
             $ctx->beginTransaction();
             if (!$ctx->skipWhitespace()) break;
@@ -127,7 +127,7 @@ class Parser {
     }
     
     public function parseBodies(ParserContext $ctx) {
-        $lists = [];
+        $lists = array();
         while (true) {
             if ($ctx->peek() != '{') break;
             if ($ctx->peek(2) != ':') break;
@@ -175,7 +175,7 @@ class Parser {
     }
     
     public function parseFilters(ParserContext $ctx) {
-        $filters = [];
+        $filters = array();
         while (true) {
             if ($ctx->peek() != '|') break;
             $filter = new Ast\Filter($ctx->offset);
@@ -255,7 +255,7 @@ class Parser {
     public function parseInline(ParserContext $ctx) {
         if ($ctx->peek() != '"') return null;
         $inline = new Ast\Inline($ctx->offset);
-        $inline->parts = [];
+        $inline->parts = array();
         $ctx->offset++;
         while (true) {
             $part = $this->parseSpecial($ctx);

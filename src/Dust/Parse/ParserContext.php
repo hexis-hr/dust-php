@@ -6,7 +6,7 @@ class ParserContext {
     
     public $offset = 0;
     
-    public $offsetTransactionStack = [];
+    public $offsetTransactionStack = array();
     
     public function __construct($str) { $this->str = $str; }
     
@@ -36,10 +36,10 @@ class ParserContext {
             $line++;
         }
         if ($prev == -1) $prev = 0;
-        return (object)[
+        return (object)array(
             "line" => $line + 1,
             "col" => $offset - $prev
-        ];
+        );
     }
     
     public function peek($offset = 1) {
@@ -55,7 +55,7 @@ class ParserContext {
     
     public function skipWhitespace() {
         $found = false;
-        while (in_array($this->peek(), [' ', "\t", "\v", "\f", "\r", "\n"])) {
+        while (in_array($this->peek(), array(' ', "\t", "\v", "\f", "\r", "\n"))) {
             $this->offset++;
             $found = true;
         }

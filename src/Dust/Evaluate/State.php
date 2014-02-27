@@ -10,7 +10,7 @@ class State {
     
     public function __construct($value) {
         $this->value = $value;
-        $this->params = [];
+        $this->params = array();
     }
     
 }

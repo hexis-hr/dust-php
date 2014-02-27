@@ -10,10 +10,10 @@ class HtmlEscape implements Filter {
     }
     
 }
-HtmlEscape::$replacers = [
+HtmlEscape::$replacers = array(
     '&' => '&amp;',
     '<' => '&lt;',
     '>' => '&gt;',
     '"' => '&quot;',
     "'" => '&#39;'
-];
+);

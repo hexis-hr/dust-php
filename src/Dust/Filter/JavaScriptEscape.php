@@ -10,7 +10,7 @@ class JavaScriptEscape implements Filter {
     }
     
 }
-JavaScriptEscape::$replacers = [
+JavaScriptEscape::$replacers = array(
     "\\" => "\\\\",
     "\r" => "\\r",
     "\n" => "\\n",
@@ -18,4 +18,4 @@ JavaScriptEscape::$replacers = [
     "'" => "\\'",
     '"' => "\\\"",
     "\t" => "\\t"
-];
+);
