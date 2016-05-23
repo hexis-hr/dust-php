@@ -254,8 +254,9 @@ class Evaluator {
 
     public function normalizeResolved(Context $ctx, $resolved, Chunk $chunk, Ast\Section $section = null) {
         $handledSpecial = true;
+        $unallowedFunctions = ['split'];
         while ($handledSpecial) {
-            if (is_callable($resolved)) {
+            if (is_callable($resolved) && !in_array(strtolower($resolved), $unallowedFunctions)) {
                 //call callback
                 $resolved = $this->handleCallback($ctx, $resolved, $chunk, $section);
             } elseif ($resolved instanceof Ast\Inline) {
@@ -317,7 +318,7 @@ class Evaluator {
             //must be non-closure object
             if (is_object($newThis) && !($newThis instanceof \Closure)) {
                 // todo: fine a workaround
-                //$callback = \Closure::($callback, $newThis);
+                $callback = \Closure::bind($callback, $newThis);
             }
         }
         if (is_object($callback) && method_exists($callback, '__invoke')) {
