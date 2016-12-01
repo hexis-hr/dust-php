@@ -254,7 +254,7 @@ class Evaluator {
 
     public function normalizeResolved(Context $ctx, $resolved, Chunk $chunk, Ast\Section $section = null) {
         $handledSpecial = true;
-        $unallowedFunctions = ['split'];
+        $unallowedFunctions = ['split', 'floor'];
         while ($handledSpecial) {
             if (is_callable($resolved) && !in_array(strtolower($resolved), $unallowedFunctions)) {
                 //call callback
